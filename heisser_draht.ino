@@ -116,6 +116,8 @@ void loop() {
       lastPenaltyTime = penaltyTime; 
     }
   }
+
+  Serial.println("00:00.000;000;Start");
   
   // game running
   millisStart = millis(); 
@@ -132,6 +134,7 @@ void loop() {
 	// Yes, goto is ugly. I know.
 	
 	if (digitalRead(actualStartPin) == LOW) {
+    Serial.println("00:00.000;000;Reset");
 		goto strafzeit;
 	}
 	
@@ -147,7 +150,13 @@ void loop() {
     if (!buzzerOn) {
       // Check for mistakes
       if (digitalRead(mistakePin) == LOW) {
-        mistakes++; 
+        mistakes++;
+        unsigned long errorMillis = millis();
+
+        unsigned long CurrentTime = round((errorMillis - millisStart)/1000) + (mistakes * penaltyTime);
+        char buf[21];
+        sprintf(buf,"%02d:%02d.%03d;%03d;Mistake",(int)(CurrentTime/60), (int)(CurrentTime%60), (int)((errorMillis-millisStart)%1000), (int)(mistakes));
+        Serial.println(buf);
         digitalWrite(buzzerPin, HIGH); 
         buzzerOn = 1;
         lastError = now;
@@ -167,6 +176,12 @@ void loop() {
   
   // Game finished
   millisEnd = millis(); 
+  unsigned long CurrentTime = round((millisEnd - millisStart)/1000) + (mistakes * penaltyTime);
+
+  char buf[18];
+  sprintf(buf,"%02i:%02i.%03i;%03i;Stop",(int)(CurrentTime/60), (int)(CurrentTime%60), (int)((millisEnd-millisStart)%1000), (int)(mistakes));
+  Serial.println(buf);
+
   clearRow(0);
   printStringCenter(0, "Spiel beendet!");
   printStatusOnScreen();
@@ -185,9 +200,8 @@ unsigned long lastPlayingTime = 0;
 
 void printSevSeg() {
     unsigned long playingTime = round((millis() - millisStart)/1000) + (mistakes * penaltyTime);
-//      Serial.println(millis());
     if (playingTime != lastPlayingTime) {
-      Serial.println(playingTime);
+//      Serial.println(playingTime);
       int seconds = playingTime % 60;
       int minutes = playingTime / 60;
       int displayTime = minutes * 100 + seconds;
