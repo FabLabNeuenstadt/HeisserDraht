@@ -253,7 +253,7 @@ String sec2MinSecString(int input) { // converts seconds to a string like "minut
   char buf[6];
   int minutes = (int)(input / 60);
   int seconds = (int)(input % 60);
-  if (minutes > 100) {
+  if (minutes > 99) {
     minutes = 99;
   }
   sprintf(buf, "%d:%02d ", minutes, seconds);
