@@ -8,7 +8,9 @@
 
 We use a Arduino Mega, a seven segment display and a LCD
 
-Wiring of the hot wire: 
+## Arduino wiring
+
+### Wiring of the hot wire
 - 22: start
 - 24: stop
 - 26: mistake
@@ -16,12 +18,13 @@ Wiring of the hot wire:
 - A0: penalty time
 
 In this implementation start and stop are interchangeable, we can
-begin from either side. We trigger the start/stop with our game loop
+begin from either side. We trigger the start/stop with our game loop.
 
-Connections for seven segment display:
+### Wiring of the seven segment display
 45, 46, 47, 48, 49, 50, 51, 52
+We use the library SevSeg available [here](https://github.com/FabLabNeuenstadt/SevSeg)
 
-Connections LCD:
+### Wiring of the LCD
 - rs (LCD pin 4) to Arduino pin 12
 - rw (LCD pin 5) to Arduino pin 11
 - enable (LCD pin 6) to Arduino pin 10
