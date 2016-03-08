@@ -134,7 +134,11 @@ void loop() {
 	// Yes, goto is ugly. I know.
 	
 	if (digitalRead(actualStartPin) == LOW) {
-    Serial.println("00:00.000;000;Reset");
+		if (buzzerOn) {
+			digitalWrite(buzzerPin, LOW);
+			buzzerOn = 0;
+		}
+		Serial.println("00:00.000;000;Reset");
 		goto strafzeit;
 	}
 	
