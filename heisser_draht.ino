@@ -252,11 +252,12 @@ void clearRow(byte row) {
 }
 
 String sec2MinSecString(int input) { // converts seconds to a string like "minutes:seconds"
-  String minutes = String((int)(input / 60));
-  String seconds = String(input % 60); 
-  if (seconds.length() == 1) 
-    seconds = "0" + seconds; 
-  //if (minutes.length() == 1) 
-  //  minutes = "0" + minutes; 
-  return minutes + ":" + seconds + " ";
+  char buf[6];
+  int minutes = (int)(input / 60);
+  int seconds = (int)(input % 60);
+  if (minutes > 100) {
+    minutes = 99;
+  }
+  sprintf(buf, "%d:%02d ", minutes, seconds);
+  return String(buf);
 }
