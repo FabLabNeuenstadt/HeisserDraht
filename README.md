@@ -31,21 +31,21 @@ Connections LCD:
 ## Serial communication of game state
 
 When the game runs, we send the current state of the game via serial
-connection to use a bigger display powered by a Raspberry Pi
+connection to use a bigger display powered by a Raspberry Pi.
 
-Our messages have the format
+All messages have the format
 
-"mm:ss:xxx;mmm;status"
+> mm:ss:xxx;mmm;status
 
-	mm	Minutes
-	ss	Seconds
-	xxx	Milliseconds
-	mmm	Current count of mistakes
-	status can be:
-		Start	The start of a game
-		Reset	The player has gone back to the start
-		Mistake	A mistake was made
-		Stop	The player has completed a run
+- __mm__: Minutes
+- __ss__: Seconds
+- __xxx__: Milliseconds
+- __mmm__: Current count of mistakes
+- __status__ can be:
+	- __Start__: The start of a game
+	- __Reset__: The player has gone back to the start
+	- __Mistake__: A mistake was made
+	- __Stop__: The player has completed a run
 
 Special Case: When the status is "Start" then the time in front of it
 is not the current time (which is 00:00.000) but rather the penalty time
