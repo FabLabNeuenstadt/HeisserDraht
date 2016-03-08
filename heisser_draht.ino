@@ -134,7 +134,7 @@ void loop() {
   while (digitalRead(actualStopPin) == HIGH) {
 	
 	// Check for reset (by again touching actualStartPin)
-	// Yes, goto is ugly. I know.
+	// Yes, goto is ugly. I know. But it must be done like this if we don't completely rewrite the code
 	
 	if (digitalRead(actualStartPin) == LOW) {
 		if (buzzerOn) {
@@ -207,7 +207,6 @@ unsigned long lastPlayingTime = 0;
 void printSevSeg() {
     unsigned long playingTime = round((millis() - millisStart)/1000) + (mistakes * penaltyTime);
     if (playingTime != lastPlayingTime) {
-//      Serial.println(playingTime);
       int seconds = playingTime % 60;
       int minutes = playingTime / 60;
       int displayTime = minutes * 100 + seconds;
