@@ -42,11 +42,11 @@ All messages have the format
 - __xxx__: Milliseconds
 - __mmm__: Current count of mistakes
 - __status__ can be:
-	- __Start__: The start of a game
+	- __Start__: The start of a game (make note of the special case)
 	- __Reset__: The player has gone back to the start
 	- __Mistake__: A mistake was made
 	- __Stop__: The player has completed a run
 
-Special Case: When the status is "Start" then the time in front of it
+__Special Case__: When the status is "Start" then the time in front of it
 is not the current time (which is 00:00.000) but rather the penalty time
 of this run that is added for each mistake made.
