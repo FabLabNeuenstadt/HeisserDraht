@@ -204,10 +204,15 @@ void loop() {
 unsigned long lastPlayingTime = 0;
 
 void printSevSeg() {
-    unsigned long playingTime = round((millis() - millisStart)/1000) + (mistakes * penaltyTime);
+	unsigned long currentMillis = millis();
+    unsigned long playingTime = round((currentMillis - millisStart)/1000) + (mistakes * penaltyTime);
     if (playingTime != lastPlayingTime) {
       int seconds = playingTime % 60;
       int minutes = playingTime / 60;
+	  char buf[21];
+      sprintf(buf,"%02i:%02i.%03i;%03i;Time",(int)(playingTime/60), (int)(playingTime%60), (int)((currentMillis-millisStart)%1000), (int)(mistakes));
+      Serial.println(buf);
+
       int displayTime = minutes * 100 + seconds;
 
       sevseg.setNumber(displayTime,2); 

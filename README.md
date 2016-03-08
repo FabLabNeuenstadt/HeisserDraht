@@ -47,6 +47,7 @@ All messages have the format
 - __status__ can be:
 	- __Start__: The start of a game (make note of the special case)
 	- __Reset__: The player has gone back to the start
+	- __Time__: Nothing happened, we just send the current time every second
 	- __Mistake__: A mistake was made
 	- __Stop__: The player has completed a run
 
