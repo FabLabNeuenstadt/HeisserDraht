@@ -1,4 +1,4 @@
-# Heisser Draht
+# Hot wire (Heisser Draht)
 
 > software originally for http://www.kreativekiste.de/elektro/dem-heissen-draht-auf-der-spur
 >
@@ -8,7 +8,7 @@
 
 We use a Arduino Mega, a seven segment display and a LCD
 
-Wire-wiring: 
+Wiring of the hot wire: 
 - 22: start
 - 24: stop
 - 26: mistake
