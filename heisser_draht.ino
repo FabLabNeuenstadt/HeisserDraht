@@ -117,8 +117,11 @@ void loop() {
     }
   }
 
-  Serial.println("00:00.000;000;Start");
-  
+
+//  Serial.println("00:00.000;000;Start");
+  char buf[21];
+  sprintf(buf,"%02d:%02d.000;000;Start",(int)(penaltyTime/60), (int)(penaltyTime%60));
+
   // game running
   millisStart = millis(); 
   clearScreen();
@@ -182,7 +185,6 @@ void loop() {
   millisEnd = millis(); 
   unsigned long CurrentTime = round((millisEnd - millisStart)/1000) + (mistakes * penaltyTime);
 
-  char buf[18];
   sprintf(buf,"%02i:%02i.%03i;%03i;Stop",(int)(CurrentTime/60), (int)(CurrentTime%60), (int)((millisEnd-millisStart)%1000), (int)(mistakes));
   Serial.println(buf);
 

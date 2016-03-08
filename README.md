@@ -46,3 +46,7 @@ Our messages have the format
 		Reset	The player has gone back to the start
 		Mistake	A mistake was made
 		Stop	The player has completed a run
+
+Special Case: When the status is "Start" then the time in front of it
+is not the current time (which is 00:00.000) but rather the penalty time
+of this run that is added for each mistake made.
