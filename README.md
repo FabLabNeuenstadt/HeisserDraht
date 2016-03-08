@@ -1,8 +1,8 @@
 # Heisser Draht
 
-software originally for http://www.kreativekiste.de/elektro/dem-heissen-draht-auf-der-spur
-developed by Timo Denk (Nov 2014)
-modified by Sebastian Sproesser (2015)
+> software originally for http://www.kreativekiste.de/elektro/dem-heissen-draht-auf-der-spur
+> developed by Timo Denk (Nov 2014)
+> modified by Sebastian Sproesser (2015)
 
 We use a Arduino Mega, a seven segment display and a LCD
 
