@@ -98,6 +98,7 @@ void loop() {
 
   char buf[21];
   sprintf(buf,"%02d:%02d.000;000;Start",(int)(penaltyTime/60), (int)(penaltyTime%60));
+  Serial.println(buf);
 
   // game running
   millisStart = millis(); 
